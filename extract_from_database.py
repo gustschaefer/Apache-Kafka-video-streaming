@@ -18,8 +18,8 @@ def get_val(k, dict):
 
 	return "value doesn't exist"
 
-def decode_img(encoded):
-	str_img = base64.b64decode(encoded)
+def decode_img(encoded_img):
+	str_img = base64.b64decode(encoded_img)
 	numpy_img = np.array(Image.open(io.BytesIO(str_img)))
 
 	return numpy_img

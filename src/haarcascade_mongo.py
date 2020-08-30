@@ -18,7 +18,7 @@ def is_face(img):
 											scaleFactor = 1.2, 
 											minNeighbors = 5) 
 
-	if np.size(face_rect) > 0:
+	if np.size(face_rect) > 0: # face was detected
 		return True
 
 	return False
