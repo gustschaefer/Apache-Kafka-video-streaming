@@ -31,7 +31,7 @@ A estrutura do elemento no mongodb segue o molde:
     - [Inicialização do MongoDB](#inicialização-do-mongoDB)
     - [Inicialização do Consumer](#inicialização-do-consumer)
     - [Inicialização do Producer](#inicialização-do-producer)
-    - [Opicional](#opicional:-visualização-do-tráfego-de-dados-pelo-terminal)
+    - [Opcional](#opcional:-visualização-do-tráfego-de-dados-pelo-terminal)
     - [Detecção de faces e banco de dados](#detecção-de-faces-e-banco-de-dados)
 - [Links](#links)
 
@@ -65,7 +65,7 @@ Enquanto o kafka consumer está lendo o vídeo, as funções do programa **haarc
   <img src="./screenshot/faces_folder_ex.jpeg">
 </p>
 
-Frames sem rostos detectados são salvos na pasta 'not_face', porém esse também é um processo opicinal.
+Frames sem rostos detectados são salvos na pasta 'not_face', porém esse também é um processo opcinal.
 
 <p align="center">
   <img src="./screenshot/not_face_folder.jpeg">
@@ -121,9 +121,9 @@ Acesse o link:  http://0.0.0.0:5000/video e aguarde até que o producer inicie o
 3. Inicie o **producer** e informe o **vídeo que será utilizado no stream** digitando sua localização após o comando python que inicia o consumer, nesse caso irei utilizar o vídeo 'sample.mp4' localizado em '**./videos/sample.mp4**', mas você pode baixar/utilizar algum outro vídeo de sua preferência. ```python consumer.py ./videos/sample.mp4```
 
 Se tudo ocorrer como esperado, o producer irá iniciar a transmissão. 
-Atualize a página web  http://0.0.0.0:5000/video e vai ver o stream do vídeo escolhido.
+Atualize a [página web](http://0.0.0.0:5000/video) e vai ver o stream do vídeo escolhido.
 
-### Opicional: visualização do tráfego de dados pelo terminal
+### Opcional - visualização do tráfego de dados pelo terminal
 
 1. Abra um terminal linux.
 2. Navegue até a pasta em que seu kafka foi extraido, no meu caso: ```cd Documents/kafka_2.11-2.4.1/```
