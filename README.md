@@ -91,13 +91,13 @@ O algoritimo haar cascades utilizado funciona com maior precisão em rostos dete
   <img src="./screenshot/fronta_face_haar_ex.jpeg">
 </p>
 
-Enquanto o kafka consumer está lendo o vídeo, as funções do programa **haarcascade_mongo.py** interpretam os frames e classifica cada um baseando-se no retorno da função ```is_face(img)```. Se um rosto for detectado na imagem, imediatamente a data e hora em que o evento ocorreu são salvas (timestamp), juntamente com seu boundingbox (coordenadas do retângulo de marcação do rosto) e número do frame no vídeo. O mais importante é salvar a imagem e suas informações no banco de dados, entretanto, elas também são salvas na pasta 'faces'apenas para obter uma visualização mais estética do desempenho do programa. 
+Enquanto o kafka consumer está lendo o vídeo, as funções do programa **haarcascade_mongo.py** interpretam os frames e classifica cada um baseando-se no retorno da função ```is_face(img)```. Se um rosto for detectado na imagem, imediatamente a data e hora em que o evento ocorreu são salvas (timestamp), juntamente com seu boundingbox (coordenadas do retângulo de marcação do rosto) e número do frame no vídeo. O mais importante é salvar a imagem e suas informações no banco de dados, entretanto, elas também são salvas na pasta './faces'apenas para obter uma visualização mais estética do desempenho do programa. 
 
 <p align="center">
   <img src="./screenshot/faces_folder_ex.jpeg">
 </p>
 
-Frames sem rostos detectados são salvos na pasta 'not_face', porém esse também é um processo opcinal.
+Frames sem rostos detectados são salvos na pasta './not_face', porém esse também é um processo opcinal.
 
 <p align="center">
   <img src="./screenshot/not_face_folder.jpeg">
@@ -174,9 +174,9 @@ Se você quiser **excluir** um tópico, utilize ``` bin/kafka-topics.sh --delete
 
 ### Detecção de faces e banco de dados
 
-Agora que o vídeo está sendo transmitido, você pode utilizar o 4° terminal utilizado (**consumer.py**) para ver em que frame do vídeo a transmissão se encontra. Se algum rosto for detectado, você verá a mensagem 'face detected!'.
+Agora que o vídeo está sendo transmitido, você pode utilizar o 4° terminal (**consumer.py**) para ver em que frame do vídeo a transmissão se encontra. Se algum rosto for detectado, você verá a mensagem 'face detected!'.
 
-Após o stream ser finalizado, você pode utilizar a pasta 'faces' para checar de maneira rápida quais foram os frames com rosto detectado, assim como a pasta 'not_face' contendo os frames sem rosto.
+Após o stream ser finalizado, você pode utilizar a pasta './faces' para checar de maneira rápida quais foram os frames com rosto detectado, assim como a pasta './not_face' contendo os frames sem rosto.
 
 Utilize as funcionalidades do programa ```extract_from_database.py``` para manipular e/ou acessar os elementos salvos no mongodb.
 
