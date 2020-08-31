@@ -1,7 +1,9 @@
 # Kafka distributed video streaming
 
+**** Pendentes: links de instalaçao e inicializaçao do mongo
+
 Transmissão de vídeo utilizando Kafka/zookeeper e fazendo seu processamento com opencv-python.
-O Kafka producer (```producer.py```) é responsável por efetuar a conversão dos frames do video para o formato de imagem '.jpg', enviá-los para algum determinado tópico e publicar o vídeo (formato base64). O consumer (```consumer.py```), acessa o tópico e cria o app web para mostrar a tranmissão do vídeo. Além disso, o ele também decodifica cada frame para o formato original e, utilizando o algoritimo de detecção de faces haar cascades, classifica as imagens contendo faces ou não. Se o frame contém um rosto, ele é salvo no banco de dados mongodb junto com:
+O Kafka producer (```producer.py```) é responsável por efetuar a conversão dos frames do video para o formato de imagem '.jpg', enviá-los para algum determinado tópico e publicar o vídeo (formato base64). O consumer (```consumer.py```), acessa o tópico e cria o app web para mostrar a tranmissão do vídeo. Além disso, ele também decodifica cada frame para o formato original e, utilizando o algoritimo de detecção de faces haar cascades, classifica as imagens contendo faces ou não. Se o frame contém um rosto, ele é salvo no banco de dados mongodb junto com:
 
 - Bounding Box
 - Timestamp
@@ -31,7 +33,7 @@ A estrutura do elemento no mongodb segue o molde:
     - [Inicialização do MongoDB](#inicialização-do-mongoDB)
     - [Inicialização do Consumer](#inicialização-do-consumer)
     - [Inicialização do Producer](#inicialização-do-producer)
-    - [Opcional](#opcional:-visualização-do-tráfego-de-dados-pelo-terminal)
+    - [Opcional](#opcional-visualização-do-tráfego-de-dados-pelo-terminal)
     - [Detecção de faces e banco de dados](#detecção-de-faces-e-banco-de-dados)
 - [Links](#links)
 
@@ -102,6 +104,7 @@ Como dito acima, para que o projeto funcione, tanto o kafka, zookeeper e mongodb
 ### Inicialização do MongoDB
 
 1. Abra um terminal linux (3° terminal utilizado).
+
 ****pendente******
 
 ### Inicialização do Consumer
@@ -123,7 +126,7 @@ Acesse o link:  http://0.0.0.0:5000/video e aguarde até que o producer inicie o
 Se tudo ocorrer como esperado, o producer irá iniciar a transmissão. 
 Atualize a [página web](http://0.0.0.0:5000/video) e vai ver o stream do vídeo escolhido.
 
-### Opcional - visualização do tráfego de dados pelo terminal
+### Opcional visualização do tráfego de dados pelo terminal
 
 1. Abra um terminal linux.
 2. Navegue até a pasta em que seu kafka foi extraido, no meu caso: ```cd Documents/kafka_2.11-2.4.1/```
