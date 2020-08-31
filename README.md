@@ -130,7 +130,10 @@ Atualize a [página web](http://0.0.0.0:5000/video) e vai ver o stream do vídeo
 
 1. Abra um terminal linux.
 2. Navegue até a pasta em que seu kafka foi extraido, no meu caso: ```cd Documents/kafka_2.11-2.4.1/```
-4. Inicie um Kafka consumer no terminal. **Importante: o nome do tópico deve ser o mesmo que está nos programas python, que por padrão é: distributed-video1**. ```bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic distributed-video1 --from-beginning```
+4. Inicie um Kafka consumer no terminal. ```bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic distributed-video1 --from-beginning```
+
+**Importante: o nome do tópico deve ser o mesmo que está nos programas python, que por padrão é: distributed-video1**
+
 5. Aguarde a transmissão do producer se iniciar para ver o tráfego dos dados no terminal.
 
 Se você quiser **excluir** um tópico, utilize ``` bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic NOME_DO_TÓPICO```
