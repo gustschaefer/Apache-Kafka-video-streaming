@@ -1,9 +1,7 @@
-# Kafka distributed video streaming
-
-**** Pendentes: links de instalaçao e inicializaçao do mongo
+# Kafka distributed video streaming and processing
 
 Transmissão de vídeo utilizando Kafka/zookeeper e fazendo seu processamento com opencv-python.
-O Kafka producer (```producer.py```) é responsável por efetuar a conversão dos frames do video para o formato de imagem '.jpg', enviá-los para algum determinado tópico e publicar o vídeo (formato base64). O consumer (```consumer.py```), acessa o tópico e cria o app web para mostrar a tranmissão do vídeo. Além disso, ele também decodifica cada frame para o formato original e, utilizando o algoritimo de detecção de faces haar cascades, classifica as imagens contendo faces ou não. Se o frame contém um rosto, ele é salvo no banco de dados mongodb junto com:
+O Kafka producer (```producer.py```) é responsável por efetuar a conversão dos frames do video para o formato de imagem .jpg, enviá-los para algum determinado tópico e publicar o vídeo (formato base64). O consumer (```consumer.py```), acessa o tópico e cria o app web para mostrar a tranmissão do vídeo. Além disso, ele também decodifica cada frame para o formato original e, utilizando o algoritimo de detecção de faces haar cascades, classifica as imagens contendo faces ou não. Se o frame contém um ou mais rostos, ele é salvo no banco de dados mongodb junto com:
 
 - Bounding Box
 - Timestamp
@@ -43,15 +41,47 @@ Para utilizar o projeto é importante que você esteja em uma máquina **Linux**
 
 ### Instação do kafka
 
-***** links kafka *****
+Para usar esta versão do Kafka, é preciso instalar a linguagem Scala previamente. 
+
+- No terminal linux use:
+
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install scala
+```
+
+- Baixe o o arquivo compactado: https://www.apache.org/dyn/closer.cgi?path=/kafka/2.4.1/kafka_2.11-2.4.1.tgz e extraia em uma pasta de sua preferência. O Zookeeper também está incluido.
 
 ### Instalção do mongodb
 
-***** links mongo *****
+- Acesse https://docs.mongodb.com/manual/administration/install-on-linux/ e instale a versão mais recente do mongodb 
 
 ### Bibliotecas python necessárias
 
-***** links libs *****
+Além de das bibliotecas já instalados com o python, como time, os, io e base64, o programa utiliza:
+
+- [Numpy](https://numpy.org/doc/stable/contents.html)
+- [Opencv](https://docs.opencv.org/3.4/d6/d00/tutorial_py_root.html)
+- [Pillow](https://pillow.readthedocs.io/en/stable/)
+- [Pymongo](https://pymongo.readthedocs.io/en/stable/)
+- [Kafka python](https://pypi.org/project/kafka-python/)
+
+Utilize o pip para instalar as bibliotecas necessárias. Caso você não possua o pip instalado, use 
+
+```sudo apt install python3-pip```
+
+Agora, instale as bibliotecas necessárias
+
+```
+pip install numpy
+pip install cv2
+pip install pillow
+pip install pymongo
+pip install kafka-python opencv-contrib-python Flask
+```
+
+**No futuro, um arquivo docker file contendo todas as bibliotecas será disponibilizado.**
 
 ## Como o projeto funciona
 
@@ -73,7 +103,11 @@ Frames sem rostos detectados são salvos na pasta 'not_face', porém esse també
   <img src="./screenshot/not_face_folder.jpeg">
 </p>
 
-Utilizando o programa **extract_from_database.py** é possível visualizar às imagens no mongodb. Uma opção é visualizar todos os frames com faces detectados, juntamente com o seu formato dentro do mongodb (base64) e seu formato após o ser decodificada, passando pela função ```decode_img(encoded_img)```.
+Utilizando o programa **extract_from_database.py** é possível visualizar às imagens no mongodb. Uma opção é visualizar todos os frames com faces detectados, juntamente com o seu formato dentro do mongodb (base64) e seu formato após o ser decodificada, passando pela função ```decode_img(encoded_img)``` ou
+
+```python
+from extract_from_database import decode_img
+```
 
 <p align="center">
   <img src="./screenshot/types_extract.jpeg">
