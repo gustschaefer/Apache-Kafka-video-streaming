@@ -51,7 +51,7 @@ sudo apt upgrade
 sudo apt install scala
 ```
 
-- Baixe o o arquivo compactado: https://www.apache.org/dyn/closer.cgi?path=/kafka/2.4.1/kafka_2.11-2.4.1.tgz e extraia em uma pasta de sua preferência. O Zookeeper também está incluido.
+- Baixe o arquivo compactado [kafka 2.11-2.4.1](https://www.apache.org/dyn/closer.cgi?path=/kafka/2.4.1/kafka_2.11-2.4.1.tgz) e extraia em uma pasta de sua preferência. O Zookeeper também está incluido.
 
 ### Instalção do mongodb
 
